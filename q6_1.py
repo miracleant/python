@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import math
 import numpy as np
-from scipy.stats import ttest_ind
 import matplotlib.pyplot as plt
 from sklearn.cross_validation import train_test_split
 from sklearn import svm
@@ -27,40 +26,6 @@ def fLoadDataMatrix(filename):#fn-filename
     print sample
     print xmatrix
     return yfeature,sample,xmatrix
-
-
-
-# ###T检验
-# def Ttest(Feature,Sample,Matrix):
-#     Data_dict = {}
-#     pValue= []
-#     tValue= []
-#     for line in Matrix:  # temp为Matrix的一行
-#         Neg = []
-#         Pos = []
-#         i = 0  # 列坐标
-#         for lines in line:
-#             if Feature[i] == 'NEG':
-#                 Neg.append(lines)
-#             if Feature[i]=='POS':
-#                 Pos.append(lines)
-#
-#         t_value, p_value = ttest_ind(Neg, Pos)
-#         tValue.append(t_value)
-#         pValue.append(p_value)
-#
-#     k = 0
-#     # Sample 为数据第一列
-#     while (k < len(Sample)):
-#         Data_dict[Sample[k]] = pValue[k]
-#         k = k + 1
-#
-#     items = Data_dict.items()
-#     backitems = [[v[1], v[0]] for v in items]
-#
-#     backitems.sort()
-#     return [backitems[i][1] for i in range(0, len(backitems))]
-# ###T检验结束
 
 
 ###转置
@@ -163,7 +128,6 @@ Feature = []
 Sample = []
 Matrix = []
 (Feature, Sample, Matrix) = fLoadDataMatrix('C:\Users\huayra\Desktop\python\ALL2.txt')
-#sortValue=Ttest(Feature,Sample,Matrix)
 
 
 label=[]
