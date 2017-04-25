@@ -22,30 +22,20 @@ def fLoadDataMatrix(filename):#fn-filename
         matrix.append(line.split('\t')[1:])
     xmatrix = np.array(matrix, dtype=float)
     yfeature=np.array(feature)
-    print yfeature
-    print sample
-    print xmatrix
     return yfeature,sample,xmatrix
 
 
 ###转置
 def Transpose(Sample,Feature,Matrix,n):
     x=[]
-    if n>0:#从前往后预测
-        for i in range(0,n):
-            name_index=Sample.index(Sample[i])#返回行号（第多少行）
-            x.append(Matrix[name_index])
-    else:#从后往前预测
-        for i in range(n,-1):
-            name_index=Sample.index(Sample[i])
-            x.append(Matrix[name_index])
+    for i in range(0,n):
+        name_index=Sample.index(Sample[i])#返回行号（第多少行）
+        x.append(Matrix[name_index])
+
     x=np.array(x)
     y=Feature[1:]
     x=x.transpose()#转置x，将原来的行变为列，因为测试的数据是按列读取的！
     return x,y
-
-
-
 
 
 ###公式
@@ -131,7 +121,7 @@ Matrix = []
 
 
 label=[]
-rank_test=[1,10,100,-100]
+rank_test=[1,10,50,100]
 plt.figure(figsize=[11,11])
 for i in range(4):
     x,label=Transpose(Sample,Feature,Matrix,rank_test[3])#此处返回了预测的X和y
